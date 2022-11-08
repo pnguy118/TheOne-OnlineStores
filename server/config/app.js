@@ -22,7 +22,7 @@ app.use(express.static(path.join(__dirname, '../../public')));
 //Set up the router
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/stores',storesRouter);
+app.use('/store-list',storesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
