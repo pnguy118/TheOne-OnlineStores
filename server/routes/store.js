@@ -6,7 +6,7 @@ let Store = require('../models/store');
 
 /* GET display store list page. */
 router.get('/', function (req, res, next) {
-  res.render('stores/list', { title: 'Stores' });
+  res.render('stores/list', { title: 'Products' });
 });
 
 /* GET display store add page */
