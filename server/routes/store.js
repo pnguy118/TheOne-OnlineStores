@@ -11,7 +11,7 @@ router.get('/', function (req, res, next) {
 
 /* GET display store add page */
 router.get('/add', function (req, res, next) {
-  res.render('stores/add', { title: 'Add Store' });
+  res.render('stores/add', { title: 'Add Product' });
 });
 
 /* POST add a new store model */
