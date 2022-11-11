@@ -6,12 +6,12 @@ let Store = require('../models/store');
 
 /* GET display store list page. */
 router.get('/', function (req, res, next) {
-  res.render('stores/list', { title: 'Products' });
+  res.render('stores/list', { title: 'Store' });
 });
 
 /* GET display store add page */
 router.get('/add', function (req, res, next) {
-  res.render('stores/add', { title: 'Add Product' });
+  res.render('stores/add', { title: 'Add Store' });
 });
 
 /* POST add a new store model */
@@ -46,7 +46,7 @@ router.get('/edit/:id', function (req, res, next) {
       res.end(err);
     }
     else {
-      res.render('/store/edit', { title: "Edit Store", store: storeToEdit });
+      res.render('stores/edit', { title: "Edit Store", store: storeToEdit });
     }
   });
 });
