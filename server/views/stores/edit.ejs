@@ -10,26 +10,34 @@
 
     <div class="col-md-8">
       <h1 class="text-center mb-3"><%= title %></h1>
+
       <form method="post">
+
         <div class="row g-3">
 
           <div class="col-md-6">
             <label for="storeName" class="form-label">Name</label>
-            <input type="text" class="form-control" id="storeName" name="storeName" value="<%= store.storeName %>" placeholder="" required>
+
+            <input type="text" class="form-control" id="storeName" name="storeName" placeholder="" value="<%= store.storeName %> " required>
           </div>
           <div class="col-md-6">
             <label for="owner" class="form-label">Owner</label>
-            <input type="text" class="form-control" id="owner" name="owner" value="<%= store.owner %>" placeholder="" required>
+            <input type="text" class="form-control" id="owner" name="owner" placeholder="" value="<%= store.owner %> " required>
+
           </div>
 
           <div class="col-md-6">
             <label for="type" class="form-label">Type</label>
-            <input type="text" class="form-control" id="type" name="type" value="<%= store.type %>" placeholder="" required>
+
+            <input type="text" class="form-control" id="type" name="type" placeholder="" value="<%= store.type %> " required>
+
           </div>
 
           <div class="col-md-6">
             <label for="location" class="form-label">Location</label>
-            <input type="text" class="form-control" id="location" name="location" value="<%= store.location %>" placeholder="" required>
+
+            <input type="text" class="form-control" id="location" name="location" placeholder="" value="<%= store.location %> " required>
+
           </div>
 
           <hr class="my-4">
@@ -38,22 +46,33 @@
 
           <div class="col-sm-12">
             <label for="about" class="form-label">About</label>
-            <input type="text" class="form-control" id="about" name="about" value="<%= store.about %>" placeholder="" required>
+
+            <input type="text" class="form-control" id="about" name="about" placeholder="" value="<%= store.about %> " required>
+
           </div>
 
           <div class="col-sm-12">
             <label for="rate" class="form-label">Rate</label>
-            <input type="number" class="form-control" id="rate" name="rate" value="<%= store.rate %>" placeholder="" required>
+
+            <input type="number" class="form-control" id="rate" name="rate" placeholder=""  value="<%= store.rate %> " required >
+
           </div>
 
           <div class="col-sm-12">
             <label for="review" class="form-label">Review</label>
-            <input type="text" class="form-control" id="review" name="review" value="<%= store.review %>" placeholder="" required>
+
+            <input type="text" class="form-control" id="review" name="review" placeholder="" value="<%= store.review %> "required>
           </div>
 
-          <hr class="my-4">
+          <button class="btn btn-primary" type="submit">
+            <i class="fas fa-edit"></i>Submit
+          </button>
+  
+          <a href="/store-list" class="btn btn-warning">
+            <i class="fas fa-undo"></i>Cancel
+          </a><hr class="my-4">
 
-          <input class="w-100 btn btn-primary btn-lg" type="submit" value="Update Store">
+
       </form>
     </div>
 
