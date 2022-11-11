@@ -1,0 +1,63 @@
+
+<%- include ../partials/header.ejs %>
+
+<%- include ../partials/main_nav.ejs %>
+
+<main class="container pb-5 mb-5">
+
+  <div class="row justify-content-center">
+
+    <div class="col-md-8">
+      <h1 class="text-center mb-3"><%= title %></h1>
+      <form action="/store-list/add" method="post">
+        <div class="row g-3">
+
+          <div class="col-md-6">
+            <label for="storeName" class="form-label">Name</label>
+            <input type="text" class="form-control" id="storeName" name="storeName" placeholder="" required>
+          </div>
+          <div class="col-md-6">
+            <label for="owner" class="form-label">Owner</label>
+            <input type="text" class="form-control" id="owner" name="owner" placeholder="" required>
+          </div>
+
+          <div class="col-md-6">
+            <label for="type" class="form-label">Type</label>
+            <input type="text" class="form-control" id="type" name="type" placeholder="" required>
+          </div>
+
+          <div class="col-md-6">
+            <label for="location" class="form-label">Location</label>
+            <input type="text" class="form-control" id="location" name="location" placeholder="" required>
+          </div>
+
+          <hr class="my-4">
+
+          <h4 class="mb-3">Details</h4>
+
+          <div class="col-sm-12">
+            <label for="about" class="form-label">About</label>
+            <input type="text" class="form-control" id="about" name="about" placeholder="" required>
+          </div>
+
+          <div class="col-sm-12">
+            <label for="rate" class="form-label">Rate</label>
+            <input type="number" class="form-control" id="rate" name="rate" placeholder="" required>
+          </div>
+
+          <div class="col-sm-12">
+            <label for="review" class="form-label">Review</label>
+            <input type="text" class="form-control" id="review" name="review" placeholder="" required>
+          </div>
+
+          <hr class="my-4">
+
+          <input class="w-100 btn btn-primary btn-lg" type="submit" value="Add">
+      </form>
+    </div>
+
+  </div>
+
+</main>
+
+<%- include ../partials/footer.ejs %>

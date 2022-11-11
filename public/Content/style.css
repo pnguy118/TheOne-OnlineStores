@@ -1,0 +1,37 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+main .title {
+  font-weight: bold;
+}
+
+nav.main {
+  border-bottom: 1px solid rgb(204, 204, 204);
+}
+
+nav .collapse ul li:hover a,
+ul .nav-item.active {
+  background-color: rgb(233, 233, 233);
+  color: #0c0c0c;
+}
+
+ul .nav-item.active a {
+  color: #0c0c0c;
+}
+
+footer nav p {
+  color: rgb(255, 255, 255, 0.55);
+}
+
+.width-sm {
+  width: 35em;
+}
+
+.center {
+  text-align: -webkit-center;
+}
+
+/* Home */
+
+/* Products */
