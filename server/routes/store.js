@@ -1,12 +1,21 @@
 let express = require('express');
 let router = express.Router();
-
+let mongoose = require("mongoose");
 //Create a reference to the Store model
 let Store = require('../models/store');
 
 /* GET display store list page. */
 router.get('/', function (req, res, next) {
-  res.render('stores/list', { title: 'Products' });
+  Store.find((err, store)=>{
+    if(err){
+      return console.error(err);
+    } else {
+      res.render('stores/list',{
+        title: "Store List",
+        store: store,
+      });
+    }
+  })
 });
 
 /* GET display store add page */
@@ -46,7 +55,7 @@ router.get('/edit/:id', function (req, res, next) {
       res.end(err);
     }
     else {
-      res.render('/store/edit', { title: "Edit Store", store: storeToEdit });
+      res.render('stores/edit', { title: "Edit Store", store: storeToEdit });
     }
   });
 });
@@ -77,5 +86,23 @@ router.post('/edit/:id', function (req, res, next) {
     }
   });
 
+});
+module.exports = router;
+
+
+router.get("/delete/:id", (req, res, next) => {
+  let id = req.params.id;
+  
+  Store.deleteOne({_id: id}, (err) => {
+    if(err)
+    {
+      console.log(err);
+      res.end(err);
+    }
+    else
+    {
+      res.redirect('/store-list')
+    };
+  });
 });
 module.exports = router;

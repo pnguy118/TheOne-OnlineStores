@@ -8,10 +8,10 @@
 
   <h1><%= title %></h1>
   <a href="/store-list/add" class="btn btn-primary my-2">Add New Product</a>
-
+  
   <div class="album py-5 bg-light">
     <div class="container">
-
+      <!--
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         <div class="col">
           <div class="card shadow-sm">
@@ -91,6 +91,41 @@
           </div>
         </div>
         
+      </div>
+      -->
+      <div class="row">
+        <div class="col-md-offset-1 col-md-10">
+          <div class="table-responsive">
+          <table class="table table-bordered table-striped table-hover">
+            <!--HEader row-->
+            <thead>
+            <tr>
+              <th class="text-center">Name</th>
+              <th class="text-center">About</th>
+              <th class="text-center">Location</th>
+              <th class="text-center">Rate</th>
+              
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Templet row-->
+            <% for (let count = 0; count < store.length; count++) { %>
+              <tr> 
+                <td class="text-centre "><%=store[count].storeName %></td>
+                <td class="text-centre "><%=store[count].about %></td>
+                <td class="text-centre "><%=store[count].location %></td>
+                <td class="text-centre "><%=store[count].rate %></td>
+                <td class="text-center">
+                  <a href="/store-list/edit/<%= store[count]._id %>" class="btn btn-primary btm-sm"><i class="fas"></i>
+                   Edit</a>
+                  <a href="/store-list/delete/<%= store[count]._id %>" class="btn btn-danger btm-sm"><i class="fas"></i>
+                   Delete</a>
+              </td>         
+              </tr>
+              <% } %>
+          </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
