@@ -20,7 +20,7 @@ router.get('/', function (req, res, next) {
 
 /* GET display store add page */
 router.get('/add', function (req, res, next) {
-  res.render('stores/add', { title: 'Add Product' });
+  res.render('stores/add', { title: 'Add Store' });
 });
 
 /* POST add a new store model */

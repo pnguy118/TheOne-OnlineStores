@@ -8,6 +8,8 @@ let storeModel = mongoose.Schema({
     about: String,
     rate: Number,
     review: String
+},{
+    collection:"stores"
 })
 
 module.exports = mongoose.model('Store', storeModel);

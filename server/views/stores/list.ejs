@@ -1,14 +1,14 @@
 <!-- This page will show all store information existing in the database -->
-
 <%- include ../partials/header.ejs %>
-
 <%- include ../partials/main_nav.ejs %>
 
 <main class="container pb-5 mb-5">
 
   <h1><%= title %></h1>
-  <a href="/store-list/add" class="btn btn-primary my-2">Add New Product</a>
-  
+
+  <a href="/store-list/add" class="btn btn-primary my-2">Add New Store</a>
+
+
   <div class="album py-5 bg-light">
     <div class="container">
       <!--
@@ -16,81 +16,21 @@
         <div class="col">
           <div class="card shadow-sm">
             <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-              <title>Placeholder</title>
-              <rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
+              <title></title>
+              <rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Store</text>
             </svg>
 
             <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <p class="card-text"></p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-dark">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Delete</button>
+                  <a class="btn btn-sm btn-outline-dark" href="/store-list/edit/">View</a>
+                  <a class="btn btn-sm btn-outline-secondary" href="/store-list/delete/">Delete</a>
                 </div>
-                
               </div>
             </div>
           </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-              <title>Placeholder</title>
-              <rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-            </svg>
-
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-dark">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Delete</button>
-                </div>
-                
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-              <title>Placeholder</title>
-              <rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-            </svg>
-
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-dark">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Delete</button>
-                </div>
-                
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-              <title>Placeholder</title>
-              <rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-            </svg>
-
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-dark">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Delete</button>
-                </div>
-                
-              </div>
-            </div>
-          </div>
-        </div>
-        
+        </div>        
       </div>
       -->
       <div class="row">
@@ -101,10 +41,11 @@
             <thead>
             <tr>
               <th class="text-center">Name</th>
+              <th class="text-center">Owner</th>
               <th class="text-center">About</th>
               <th class="text-center">Location</th>
               <th class="text-center">Rate</th>
-              
+              <th class="text-center">Review</th>
             </tr>
           </thead>
           <tbody>
@@ -112,13 +53,17 @@
             <% for (let count = 0; count < store.length; count++) { %>
               <tr> 
                 <td class="text-centre "><%=store[count].storeName %></td>
+                <td class="text-centre "><%=store[count].owner %></td>
                 <td class="text-centre "><%=store[count].about %></td>
                 <td class="text-centre "><%=store[count].location %></td>
                 <td class="text-centre "><%=store[count].rate %></td>
+                <td class="text-centre "><%=store[count].review %></td>
                 <td class="text-center">
-                  <a href="/store-list/edit/<%= store[count]._id %>" class="btn btn-primary btm-sm"><i class="fas"></i>
+                  <a href="/store-list/edit/<%= store[count]._id %>" class="btn btn-primary btm-sm">
+                    <!-- <i class="fas"></i> -->
                    Edit</a>
-                  <a href="/store-list/delete/<%= store[count]._id %>" class="btn btn-danger btm-sm"><i class="fas"></i>
+                  <a href="/store-list/delete/<%= store[count]._id %>" class="btn btn-danger btm-sm btn-delete-store">
+                    <!-- <i class="fas"></i> -->
                    Delete</a>
               </td>         
               </tr>

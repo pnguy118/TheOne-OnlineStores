@@ -1,10 +1,7 @@
-
 <%- include ../partials/header.ejs %>
-
 <%- include ../partials/main_nav.ejs %>
 
 <main class="container pb-5 mb-5">
-
   <div class="row justify-content-center">
 
     <div class="col-md-8">
@@ -51,8 +48,13 @@
           </div>
 
           <hr class="my-4">
-
-          <input class="w-100 btn btn-primary btn-lg" type="submit" value="Add">
+          <div class="container d-flex justify-content-around">
+            <input class="btn btn-primary btn-lg w-25" type="submit" value="Add">
+            <a href="/store-list" class="btn btn-warning btn-lg w-25">
+              <!-- <i class="fas fa-undo"></i> -->
+              Cancel
+            </a>
+          </div>          
       </form>
     </div>
 
