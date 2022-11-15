@@ -32,6 +32,21 @@ footer nav p {
   text-align: -webkit-center;
 }
 
+/* Login */
+
+.container.login {
+  text-align: -webkit-center;
+}
+
+.login {
+  width: 35em;
+}
+
+.login form {
+  border: solid #dee2e6;
+  padding: 25px 25px;
+}
+
 /* Home */
 
 /* Products */

@@ -1,0 +1,28 @@
+<%- include ../partials/header.ejs %>
+
+<!-- Main Content -->
+<main class="container login py-4 mb-5 text-center">
+
+  <form class="row g-3 mt-5" action="/auth/login" method="POST">
+    <h3>Login</h3>
+    <div class="text-start col-md-12">
+      <label for="username" class="form-label">User</label>
+      <input type="text" class="form-control" id="username" name="username" value="" required>
+    </div>
+    <div class="text-start col-md-12">
+      <label for="password" class="form-label">Password</label>
+      <input type="password" class="form-control" id="password" name="password" value="" required>
+    </div>
+    <div class="col-md-12">
+      <div class="alert <%= error ? 'alert-danger' : '' %>">
+        <%= error %>
+      </div>
+    </div>
+    <div class="d-grid gap-2 pt-1">
+      <input type="submit" class="btn btn-success" value="SING IN">
+    </div>
+  </form>
+
+</main>
+
+<%- include ../partials/footer.ejs %>
