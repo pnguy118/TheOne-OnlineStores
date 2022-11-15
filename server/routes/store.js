@@ -76,7 +76,7 @@ router.post('/edit/:id', function (req, res, next) {
     "review": req.body.review
   });
 
-  Store.updateOne({ _id: id }, updatedStore, (err) => {
+  Store.updateOne({_id:id}, updatedStore, (err) => {
     if (err) {
       console.log(err);
       res.end(err);
