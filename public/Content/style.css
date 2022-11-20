@@ -6,18 +6,27 @@ main .title {
   font-weight: bold;
 }
 
-nav.main {
+.main {
   border-bottom: 1px solid rgb(204, 204, 204);
+  font-size: 1.3rem;
+  letter-spacing: 1px;
 }
 
-nav .collapse ul li:hover a,
-ul .nav-item.active {
+.nav-item:hover{
   background-color: rgb(233, 233, 233);
   color: #0c0c0c;
+  border-radius: 15px;
 }
-
-ul .nav-item.active a {
+.nav-bar .nav-item.display-auth:hover{
+  background-color: inherit;
+}
+.nav-item{
+  margin-left: 1rem;
+}
+.active .nav-link{
+  background-color: rgb(233, 233, 233);
   color: #0c0c0c;
+  border-radius: 15px;
 }
 
 footer nav p {
@@ -49,4 +58,11 @@ footer nav p {
 
 /* Home */
 
-/* Products */
+/* Stores */
+.store-card{
+  margin-right: 3rem;
+  transition: all ease-in-out .4s;
+}
+.store-card:hover{
+  scale: 1.05;  
+}

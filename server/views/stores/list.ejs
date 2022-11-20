@@ -2,79 +2,39 @@
 <%- include ../partials/header.ejs %>
 <%- include ../partials/main_nav.ejs %>
 
-<main class="container pb-5 mb-5">
+<main class="container">
 
-  <h1><%= title %></h1>
-
-  <a href="/store-list/add" class="btn btn-primary my-2">Add New Store</a>
-
-
-  <div class="album py-5 bg-light">
-    <div class="container">
-      <!--
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-              <title></title>
-              <rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Store</text>
-            </svg>
-
-            <div class="card-body">
-              <p class="card-text"></p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <a class="btn btn-sm btn-outline-dark" href="/store-list/edit/">View</a>
-                  <a class="btn btn-sm btn-outline-secondary" href="/store-list/delete/">Delete</a>
-                </div>
-              </div>
-            </div>
+  <h1 class="text-center mb-3 mt-3"><%= title %></h1>
+  
+  <a href="/store-list/add" class="btn btn-outline-success my-2">+ Create Your Own Store</a>
+  <!--Container for store cards -->
+  <div class="container d-flex flex-row justify-content-start flex-wrap store-container mt-5">
+    <% if (store.length !== 0) { %>
+      <% for( let count = 0; count < store.length; count++ ) { %>
+        <div class="card store-card border border-5 mb-2 p-2" style="width: 18rem;">
+          <img src="/Assets/images/theone_logo.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title"><%= store[count].storeName %> </h5>
+            <p class="card-text"><%= store[count].about %></p>
           </div>
-        </div>        
-      </div>
-      -->
-      <div class="row">
-        <div class="col-md-offset-1 col-md-10">
-          <div class="table-responsive">
-          <table class="table table-bordered table-striped table-hover">
-            <!--HEader row-->
-            <thead>
-            <tr>
-              <th class="text-center">Name</th>
-              <th class="text-center">Owner</th>
-              <th class="text-center">About</th>
-              <th class="text-center">Location</th>
-              <th class="text-center">Rate</th>
-              <th class="text-center">Review</th>
-            </tr>
-          </thead>
-          <tbody>
-            <!-- Templet row-->
-            <% for (let count = 0; count < store.length; count++) { %>
-              <tr> 
-                <td class="text-centre "><%=store[count].storeName %></td>
-                <td class="text-centre "><%=store[count].owner %></td>
-                <td class="text-centre "><%=store[count].about %></td>
-                <td class="text-centre "><%=store[count].location %></td>
-                <td class="text-centre "><%=store[count].rate %></td>
-                <td class="text-centre "><%=store[count].review %></td>
-                <td class="text-center">
-                  <a href="/store-list/edit/<%= store[count]._id %>" class="btn btn-primary btm-sm">
-                    <!-- <i class="fas"></i> -->
-                   Edit</a>
-                  <a href="/store-list/delete/<%= store[count]._id %>" class="btn btn-danger btm-sm btn-delete-store">
-                    <!-- <i class="fas"></i> -->
-                   Delete</a>
-              </td>         
-              </tr>
-              <% } %>
-          </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Owner: <span class="owner"><%= store[count].owner %></span></li>
+            <li class="list-group-item">Rate: <span class="rate-score"><%= store[count].rate %></span></li>
+            <li class="list-group-item">Type: <span class="shop-type"><%= store[count].type %></span></li>
+            <li class="list-group-item">Location: <span class="shop-type"><%= store[count].location %></span></li>
+          </ul>
+          <div class="card-body d-flex text-center justify-content-evenly">
+            <a href="/store-list/details/<%= store[count]._id %>" class="btn btn-info">View</a>
+            <a href="/store-list/edit/<%= store[count]._id %>" class="btn btn-success">Edit</a>
+            <a href="/store-list/delete/<%= store[count]._id %>" class="btn btn-danger">Delete</a>
+          </div>
+        </div>   
+      <% } %>
+    <% } %>
+    <!-- Store card -->
+       
+    <!-- End Store card -->
+  
 </main>
 
 <%- include ../partials/footer.ejs %>
