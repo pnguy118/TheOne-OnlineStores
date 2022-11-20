@@ -17,6 +17,8 @@ let storeController = require('../controllers/store');
 /* GET Route for the Store List page - READ Operation */
 router.get('/', storeController.displayListStore);
 
+/* GET Route for the Store Detail Page */
+router.get('/detail/:id',storeController.displayStoreDetail);
 /* GET Route for displaying the Add store - CREATE Operation */
 router.get('/add', requireAuth, storeController.displayAddStore);
 

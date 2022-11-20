@@ -8,9 +8,7 @@ let passport = require("passport");
 let mongoose = require("mongoose");
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Home' });
-});
+router.get('/', indexController.displayHomePage);
 /* GET Route for displaying the Login page */
 router.get('/login', indexController.displayLoginPage);
 

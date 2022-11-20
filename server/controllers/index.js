@@ -9,6 +9,9 @@ let User = userModel.User;
 let jwt = require('jsonwebtoken');
 let DB = require('../config/db');
 
+module.exports.displayHomePage = (req,res,next) => {
+    res.render('index', { title: 'Home',displayName:req.user ? req.user.displayName : '' });
+}
 
 module.exports.displayLoginPage = (req, res, next) => {
     if(!req.user){

@@ -1,5 +1,6 @@
-body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+:root{
+  --box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  --btn-box-shadow : rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 
 main .title {
@@ -22,6 +23,7 @@ main .title {
 }
 .nav-item{
   margin-left: 1rem;
+  padding: 2px;
 }
 .active .nav-link{
   background-color: rgb(233, 233, 233);
@@ -60,9 +62,22 @@ main .login-form {
 
 /* Stores */
 .store-card{
-  margin-right: 3rem;
+  margin-right: 3rem;  
   transition: all ease-in-out .4s;
+  box-shadow: var(--box-shadow);
 }
 .store-card:hover{
   scale: 1.05;  
+}
+/* Add Store Page */
+.form-container textarea{
+  resize: none;
+}
+.form-container{
+  box-shadow: var(--box-shadow);
+  border-top-left-radius: 10%;
+  border-bottom-right-radius: 10%;
+}
+.btn{
+  box-shadow: var(--btn-box-shadow);
 }
