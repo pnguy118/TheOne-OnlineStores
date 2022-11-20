@@ -47,11 +47,11 @@ footer nav p {
   text-align: -webkit-center;
 }
 
-.login {
+.login-form{
   width: 35em;
 }
 
-.login form {
+main .login-form {
   border: solid #dee2e6;
   padding: 25px 25px;
 }
