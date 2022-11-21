@@ -12,8 +12,12 @@ module.exports.displayListStore = (req, res, next) => {
       res.render('stores/list', {
         title: "Store List",
         store: store,
-        displayName: req.user ? req.user.displayName : ""
+        displayName: req.user ? req.user.displayName : "",
+        userId:req.user ? req.user._id.toString() : "not authenticated",
+        username:req.user ? req.user.username : "not admin"
       });
+      var username = req.user ? req.user.username : "not admin";
+      console.log(username);
     }
   });
 };
@@ -48,6 +52,7 @@ module.exports.processAddStore = (req, res, next) => {
   let newStore = Store({
     "storeName": req.body.storeName.trim(),
     "owner": req.user.displayName.trim(),
+    "ownerId": req.user._id,    
     "type": req.body.type.trim(),
     "location": req.body.location.trim(),
     "about": req.body.about.trim(),
@@ -92,6 +97,7 @@ module.exports.processEditStore = (req, res, next) => {
     "_id": id,
     "storeName": req.body.storeName.trim(),
     "owner": req.user.displayName.trim(),
+    "ownerId":req.user._id,
     "type": req.body.type.trim(),
     "location": req.body.location.trim(),
     "about": req.body.about.trim(),
