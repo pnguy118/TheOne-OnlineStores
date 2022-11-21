@@ -1,13 +1,26 @@
 let mongoose = require('mongoose');
+const User = require('./user');
 
 let storeModel = mongoose.Schema({
     storeName: String,
     owner: String,
+    //Foreign Key : One user can own many stores
+    ownerId:[
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref:"User",
+            required:"Owner id is required"
+        }
+    ],
     type: String,
     location: String,
     about: String,
     rate: Number,
-    review: String
+    review: String,
+    create_At:[{
+        type:Date,
+        default:Date.now()
+    }]
 },{
     collection:"stores"
 })
