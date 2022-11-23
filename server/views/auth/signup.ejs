@@ -1,60 +1,43 @@
 <%- include ../partials/header.ejs %>
 <%- include ../partials/main_nav.ejs %>
+<!-- Main Content -->
 <main class="container">
-    <% if (messages.length > 0) { %>
-        <div class="alert alert-danger">
-         <%- messages %> 
+    <div class="container border mt-5 border-1 p-3 login-container w-50">
+      <h1 class="text-center"><%= title %></h1>
+      <% if (messages.length >= 1) { %>
+        <div class="alert alert-danger text-center" role="alert">
+          <%= messages %>
         </div>
-       <% } %>    
-       <div class="row">
-        <div class="offset-md-4 col-md-4">
-          <h1>Please Register</h1>
-          <form method="POST" autocomplete="off">
-            <fieldset class="form-group">
-              <label for="username">Username: </label>
-              <input
-                type="text"
-                class="form-control"
-                name="username"
-                placeholder="Enter username"
-                id="username"
-                required
-                autofocus
-              />
-            </fieldset>
-    
-            <fieldset class="form-group">
-              <label for="password">Password: </label>
-              <input
-                type="password"
-                class="form-control"
-                name="password"
-                placeholder="Enter password"
-                id="password"
-                required
-              />
-              <fieldset class="form-group">
-                <label for="email">Email: </label>
-                <input type="email" class="form-control"
-                name="email" placeholder="Enter Email Address"
-                id="email" required>
-            </fieldset>
-            <fieldset class="form-group">
-              <label for="displayName">Display Name: </label>
-              <input type="text" class="form-control"
-              name="displayName" placeholder="Enter Display Name"
-              id="displayName" required>
-          </fieldset>
-            <fieldset class="form-group text-right">
-              <input type="submit" class="btn btn-success" value="Register" />
-              <a href="/">
-                <input type="button" class="btn btn-warning" value="Cancel" />
-              </a>
-            </fieldset>
-          </form>
+      <% } %>
+      <form method="post">
+        <!-- Username input -->
+        <div class="form-outline mb-4">
+          <label class="form-label" for="username">Username</label>
+          <input type="text" id="username" name="username" class="form-control" required/>
+        </div>      
+        <!-- Password input -->
+        <div class="form-outline mb-4">
+          <label class="form-label" for="password">Password</label>
+          <input type="password" id="pasword" name="password" class="form-control" required />
         </div>
-      </div>
-
+        <!-- Email input -->
+        <div class="form-outline mb-4">
+          <label class="form-label" for="email">Email</label>
+          <input type="email" id="email" name="email" class="form-control" required/>
+        </div>
+        <!-- Display Name input -->
+        <div class="form-outline mb-4">
+          <label class="form-label" for="displayName">Display Name</label>
+          <input type="text" id="displayName" name="displayName" class="form-control" required/>
+        </div>        
+        <!-- Submit button -->
+        <div class="container text-center"><button type="submit" class="btn btn-primary btn-lg mb-4">Sign up</button></div>
+        <!-- Register buttons -->
+        <div class="text-center">
+          <p>Already had an account? <a href="/login">Login</a></p>
+        </div>
+      </form>
+    </div>
 </main>
 
 <%- include ../partials/footer.ejs %>

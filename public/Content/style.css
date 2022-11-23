@@ -3,12 +3,16 @@
   --btn-box-shadow : rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
   --color-storeName: #0DCAF0;
   --mainBtn-box-shadow:rgb(38, 57, 77) 0px 20px 30px -10px;
+  --navbar-box-shadow:rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;;
 }
 main{
   min-height: 100vh;
 }
 main .title {
   font-weight: bold;
+}
+.btn{
+  box-shadow: var(--btn-box-shadow);
 }
 /* Home Page */
 .main-jumbotron{
@@ -39,6 +43,7 @@ main .title {
   border-bottom: 1px solid rgb(204, 204, 204);
   font-size: 1.3rem;
   letter-spacing: 1px;
+  box-shadow: var(--navbar-box-shadow);
 }
 
 .nav-item:hover{
@@ -52,6 +57,7 @@ main .title {
 .nav-item{
   margin-left: 1rem;
   padding: 2px;
+  transition: all ease-in-out 0.2s;
 }
 .active .nav-link{
   background-color: rgb(233, 233, 233);
@@ -74,21 +80,17 @@ footer nav p {
   text-align: -webkit-center;
 }
 
-/* Login Page*/
+/* Login + Sign Up Page*/
 
-.container.login {
-  text-align: -webkit-center;
+.login-container{
+  box-shadow: var(--box-shadow);
 }
-
-.login-form{
-  width: 35em;
+.login-container .btn-success,.btn-primary{
+  transition: all ease-in-out 0.4s;
 }
-
-main .login-form {
-  border: solid #dee2e6;
-  padding: 25px 25px;
+.login-container .btn-success:hover,.btn-primary:hover{
+  transform: translateY(-5px);
 }
-
 /* Store List Page */
 .store-card{
   margin-right: 1rem;  
@@ -104,7 +106,7 @@ main .login-form {
 .store-name{
   color: var(--color-storeName);
 }
-/* Add Store Page */
+/* Add + Update Store Page */
 .form-container textarea{
   resize: none;
 }
@@ -113,9 +115,11 @@ main .login-form {
   border-top-left-radius: 50px;
   border-bottom-right-radius: 50px;
 }
-.btn{
-  box-shadow: var(--btn-box-shadow);
-}
 .btn-bottom-container .btn{
   width: 7rem;
+  transition: all ease-in-out 0.4s;
 }
+.btn-bottom-container .btn:hover{
+  transform: translateY(-5px);
+}
+
