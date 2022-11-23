@@ -6,7 +6,7 @@
 
   <h1 class="text-center mb-3"><%= title %></h1>
   
-  <a href="/store-list/add" class="btn btn-outline-success me-2"><i class="fa-solid fa-plus"></i> Create Your Own Store</a>
+  <a href="/store-list" class="btn btn-outline-success me-2"><i class="fa-solid fa-backward"></i> Back to Store List</a>
   <!--Container for store cards -->
     <div class="d-flex flex-row justify-content-center flex-wrap store-container mt-4">
       <% if (store.length !== 0) { %>
@@ -19,8 +19,8 @@
               <p class="card-text store-about"><%= store[count].about %></p>
             </div>
             <ul class="list-group list-group-flush">
-              <!-- Link to the specific owner store based on the owner id attribute of store model -->
-              <li class="list-group-item">Owner: <a href="store-list/owner-store/<%= store[count].ownerId %> "><span class="owner fw-bold"><%= store[count].owner %></span></a></li>
+                <!-- Link to the specific owner store based on the owner id attribute of store model -->
+                <li class="list-group-item">Owner: <a href="/store-list/owner-store/<%= store[count].ownerId %> "><span class="owner fw-bold"><%= store[count].owner %></span></a></li>
               <% if (store[count].rate > 5) { %>
                 <li class="list-group-item">Rate: <span class="rate-score text-success"><%= store[count].rate %></span>/10</li>
               <% } else { %>
@@ -31,7 +31,7 @@
               <li class="list-group-item">Location: <span class="shop-type"><%= store[count].location %></span></li>
             </ul>
             <div class="card-body d-flex text-center justify-content-evenly">
-              <!-- Display only view button when user is not authenticated or not owner -->
+                <!-- Display only view button when user is not authenticated or not owner -->
               <% if (store[count].ownerId.toString() === userId || username == "admin") { %>
                 <a href="/store-list/detail/<%= store[count]._id %>" class="btn btn-info">View</a>
                 <a href="/store-list/edit/<%= store[count]._id %>" class="btn btn-success">Edit</a>

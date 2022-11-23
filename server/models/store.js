@@ -17,11 +17,10 @@ let storeModel = mongoose.Schema({
     about: String,
     rate: Number,
     review: String,
-    create_At:[{
-        type:Date,
-        default:Date.now()
-    }]
 },{
+    timestamps:true
+}
+,{
     collection:"stores"
 })
 

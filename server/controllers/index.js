@@ -9,10 +9,11 @@ let User = userModel.User;
 let jwt = require('jsonwebtoken');
 let DB = require('../config/db');
 
+/*Display Home Page*/
 module.exports.displayHomePage = (req,res,next) => {
-    res.render('index', { title: 'Home',displayName:req.user ? req.user.displayName : '' });
+    res.render('index', { title: 'Home',displayName:req.user ? req.user.displayName : ''});
 }
-
+/*Display Login Page*/
 module.exports.displayLoginPage = (req, res, next) => {
     if(!req.user){
         res.render('auth/login',{
@@ -23,8 +24,9 @@ module.exports.displayLoginPage = (req, res, next) => {
     }else{
         return res.redirect('/');
     }
+    console.log(req.flash('loginMessage'));
 };
-
+/* Process the login */
 module.exports.processLoginPage = (req, res, next) => {
     passport.authenticate('local',
     (err,user,info) => {
@@ -34,7 +36,7 @@ module.exports.processLoginPage = (req, res, next) => {
         }
         //user login error
         if (!user){
-            req.flash('loginMessage', 'Authorization Error');
+            req.flash('loginMessage', 'Wrong username or password !');
             return res.redirect('/login', );
         }
         req.login(user,(err) =>{
@@ -64,7 +66,7 @@ module.exports.processLoginPage = (req, res, next) => {
         });
     })(req, res, next);}
 
-
+/* Display Register Page*/
 module.exports.displayRegisterPage = (req, res, next) => {
     if(!req.user){
         res.render('auth/signup',{
@@ -76,14 +78,14 @@ module.exports.displayRegisterPage = (req, res, next) => {
         return res.redirect('auth/login');
     }
 };
-
+/* Process the register */
 module.exports.processRegisterPage = (req, res, next) => {
     // instantiate a user object
     let newUser = new User({
-        'username': req.body.username,
-        'password': req.body.password,
-        'email': req.body.email,
-        'displayName': req.body.displayName
+        'username': req.body.username.trim(),
+        'password': req.body.password.trim(),
+        'email': req.body.email.trim(),
+        'displayName': req.body.displayName.trim()
     });
 
     User.register(newUser, req.body.password, (err) => {
@@ -94,9 +96,8 @@ module.exports.processRegisterPage = (req, res, next) => {
             {
                 req.flash(
                     'registerMessage',
-                    'Registration Error: User Already Exists!'
-                );
-                console.log('Error: User Already Exists!')
+                    `Registration Error: ${newUser.username} Already Exists!`
+                );                
             }
             return res.render('auth/signup',
             {
@@ -115,6 +116,7 @@ module.exports.processRegisterPage = (req, res, next) => {
         }
     });
 }
+/* Perform the logout */
 module.exports.performLogout = (req, res, next) => {
   req.logout(function (err) {
     if (err) {

@@ -24,9 +24,10 @@
         <li class="nav-item">
           <% } %>
           <a class="nav-link" href="/store-list">Stores</a>
-        </li>
+        </li>        
       </ul>
       <div class="nav-item display-auth">
+        <!-- Display user's name and logout button if user is authenticated -->
         <% if (displayName !== '') { %>
           Hi, <span class="display-name"><%= displayName %></span>
           <a href="/logout" class="btn btn-outline-danger me-2">Logout</a>
