@@ -11,7 +11,7 @@ var usersRouter = require('../routes/users');
 var storesRouter = require('../routes/store');
 var contactRouter = require('../routes/contact');
 var aboutRouter = require('../routes/about');
-
+var productRouter = require('../routes/product');
 //create usermodel instance
 let userModel = require("../models/user");
 let User = userModel.User;
@@ -27,6 +27,7 @@ let passportLocal = require("passport-local");
 let localStratergy = passportLocal.Strategy;
 let flash = require("connect-flash");
 let passportJWT = require('passport-jwt');
+const product = require('../models/product');
 
 let JWTStategy = passportJWT.Strategy;
 let ExtractJwt = passportJWT.ExtractJwt;
@@ -94,7 +95,7 @@ app.use('/users', usersRouter);
 app.use('/store-list',storesRouter);
 app.use('/contact',contactRouter);
 app.use('/about',aboutRouter);
-
+app.use('/product-list',productRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
