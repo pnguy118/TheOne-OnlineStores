@@ -24,18 +24,32 @@
         <li class="nav-item">
           <% } %>
           <a class="nav-link" href="/store-list">Stores</a>
-        </li>        
+        </li>
+        <% if (title == "About") { %>
+        <li class="nav-item active">
+          <% } else  { %>
+        <li class="nav-item">
+          <% } %>
+          <a class="nav-link" href="/about">About</a>
+        </li>
+        <% if (title == "Contact") { %>
+        <li class="nav-item active">
+          <% } else  { %>
+        <li class="nav-item">
+          <% } %>
+          <a class="nav-link" href="/contact">Contact</a>
+        </li>
       </ul>
       <div class="nav-item display-auth">
         <!-- Display user's name and logout button if user is authenticated -->
         <% if (displayName !== '') { %>
-          Hi, <span class="display-name"><%= displayName %></span>
-          <a href="/logout" class="btn btn-outline-danger me-2">Logout</a>
+        Hi, <span class="display-name"><%= displayName %></span>
+        <a href="/logout" class="btn btn-outline-danger me-2">Logout</a>
         <% } else { %>
-          <a href="/login" class="btn btn-outline-success me-2">Login</a>
-        <% } %>                
-          
-      </div>      
+        <a href="/login" class="btn btn-outline-success me-2">Login</a>
+        <% } %>
+
+      </div>
     </div>
   </div>
 </nav>
