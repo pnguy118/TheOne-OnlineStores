@@ -1,0 +1,50 @@
+<%- include partials/header.ejs %>
+<%- include partials/main_nav.ejs %>
+
+<!-- Main Content -->
+<main class="container py-4 mb-5 text-center">
+  <h1 class="title">Contact Us</h1>
+  <div class="row py-4">
+    <div class="col-md-4">
+    <img src="/Assets/images/envelope.png" class="img-fluid mb-3" width="200" height="100" alt="Email">
+      <h4 class="py-2">Email:</h4>
+      <p>theone@my.centennialcollege.ca<p/>
+    </div>
+    <div class="col-md-8 text-start">
+      <form class="row g-3">
+        <div class="col-md-6">
+          <label for="inputName" class="form-label">Name</label>
+          <input type="text" class="form-control" id="inputName">
+        </div>
+        <div class="col-md-6">
+          <label for="inputEmail" class="form-label">Email</label>
+          <input type="email" class="form-control" id="inputEmail">
+        </div>
+        <div class="col-6">
+          <label for="inputPhone" class="form-label">Phone</label>
+          <input type="text" class="form-control" id="inputPhone">
+        </div>
+        <div class="col-6">
+          <label for="inputInterest" class="form-label">Main Interest</label>
+          <select class="form-select form-control" aria-label="Interest">
+            <option selected></option>
+            <option value="1">Services</option>
+            <option value="2">Consulting</option>
+            <option value="3">Inquiry</option>
+            <option value="3">Other</option>
+          </select>
+        </div>
+        <div class="col-12">
+          <label for="inputMessage" class="form-label">Message</label>
+          <textarea class="form-control" id="inputMessage" rows="3"></textarea>
+        </div>
+        <div class="col-12">
+          <a href="/" class="btn btn-success btn-lg">Send</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</main>
+
+<%- include partials/footer.ejs %>

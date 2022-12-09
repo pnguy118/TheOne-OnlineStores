@@ -8,7 +8,9 @@ var app = express();
 let cors = require('cors');
 var indexRouter = require('../routes/index');
 var usersRouter = require('../routes/users');
-var storesRouter = require('../routes/store')
+var storesRouter = require('../routes/store');
+var contactRouter = require('../routes/contact');
+var aboutRouter = require('../routes/about');
 
 //create usermodel instance
 let userModel = require("../models/user");
@@ -90,6 +92,8 @@ let strategy = new JWTStategy(jwtOptions,(jwt_payload,done) => {
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/store-list',storesRouter);
+app.use('/contact',contactRouter);
+app.use('/about',aboutRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
