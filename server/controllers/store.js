@@ -5,6 +5,8 @@ let Store = require('../models/store');
 let jwt = require('jsonwebtoken');
 let userModel = require('../models/user');
 let User = userModel.User;
+let Review = require('../models/review');
+let Product = require('../models/product');
 /* GET display store list page. */
 module.exports.displayListStore = (req, res, next) => {
   Store.find({}).sort('-updatedAt').exec((err, store) => {
@@ -24,17 +26,59 @@ module.exports.displayListStore = (req, res, next) => {
 /* GET display store detail page */
 module.exports.displayStoreDetail = (req, res, next) => {
   let id = req.params.id;
+  //find current store
   Store.findById(id, (err, storeToView) => {
     if (err) {
       console.log(err);
       res.end(err);
     }
     else {
-      res.render('stores/detail', {
-        title: 'Store Detail',
-        store: storeToView,
-        displayName: req.user ? req.user.displayName : ''
+      //find all reviews of this store
+      Review.find({ "storeId": id }).sort('-updatedAt').exec((err, review) => {
+        if (err) {
+          console.log(err);
+          res.end(err);
+        }
+        else {
+          //find all product of this store
+          Product.find({ "storeId": id }).sort('-updatedAt').exec((err, product) => {
+            if (err) {
+              console.error(err);
+              res.end(err);
+            } else {
+              res.render('stores/detail', {
+                title: storeToView.storeName,
+                store: storeToView,
+                displayName: req.user ? req.user.displayName : '',
+                product: product,
+                review: review,
+                userId: req.user ? req.user._id.toString() : "not authenticated",
+                username: req.user ? req.user.username : "not admin"
+              });
+            }
+          });
+        }
       });
+    }
+  });
+};
+/* POST process review and rate in store detail page */
+module.exports.processStoreDetail = (req, res, next) => {
+  let id = req.params.id;
+  let newReview = Review({
+    "review": req.body.review.trim(),
+    "rate": req.body.rate,
+    "storeId": id,
+    "reviewerId": req.user._id,
+    "reviewerName": req.user.displayName
+  });
+  Review.create(newReview, (err) => {
+    if (err) {
+      console.log(err);
+      res.end(err);
+    }
+    else {
+      res.redirect('/store-list/detail/' + id);
     }
   });
 };
@@ -54,9 +98,7 @@ module.exports.processAddStore = (req, res, next) => {
     "ownerId": req.user._id,
     "type": req.body.type.trim(),
     "location": req.body.location.trim(),
-    "about": req.body.about.trim(),
-    "rate": req.body.rate,
-    "review": req.body.review.trim()
+    "about": req.body.about.trim()
   });
 
   Store.create(newStore, (err, store) => {
@@ -99,9 +141,7 @@ module.exports.processEditStore = (req, res, next) => {
     "ownerId": req.user._id,
     "type": req.body.type.trim(),
     "location": req.body.location.trim(),
-    "about": req.body.about.trim(),
-    "rate": req.body.rate,
-    "review": req.body.review.trim()
+    "about": req.body.about.trim()
   });
 
   Store.updateOne({ _id: id }, updatedStore, (err) => {
@@ -131,9 +171,9 @@ module.exports.displayOwnerStore = (req, res, next) => {
         }
         else {
           res.render('stores/owner_stores', {
-            title:`${owner.displayName}'s Store List`,
+            title: `${owner.displayName}'s Store List`,
             displayName: req.user ? req.user.displayName : "",
-            store:ownerStore,
+            store: ownerStore,
             userId: req.user ? req.user._id.toString() : "not authenticated",
             username: req.user ? req.user.username : "not admin"
           });

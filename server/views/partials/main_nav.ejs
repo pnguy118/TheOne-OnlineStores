@@ -39,6 +39,11 @@
           <% } %>
           <a class="nav-link" href="/contact">Contact</a>
         </li>
+        <% if (displayName !== '') { %>
+          <li class="nav-item">
+            <a href="/statistic" class="nav-link">Statistic</a>
+          </li>
+        <% } %>
       </ul>
       <div class="nav-item display-auth">
         <!-- Display user's name and logout button if user is authenticated -->

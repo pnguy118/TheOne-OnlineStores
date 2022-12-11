@@ -6,6 +6,7 @@
     "start": "node ./server.js"
   },
   "dependencies": {
+    "bluebird": "^3.7.2",
     "bootstrap": "^5.2.2",
     "connect-flash": "^0.1.1",
     "cookie-parser": "~1.4.4",

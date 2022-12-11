@@ -6,7 +6,15 @@ let DB = require('../config/db')
 let indexController = require('../controllers/index');
 let passport = require("passport");
 let mongoose = require("mongoose");
-
+function requireAuth(req, res, next)
+{
+    // check if the user is logged in
+    if(!req.isAuthenticated())
+    {
+        return res.redirect('/login');
+    }
+    next();
+}
 /* GET home page. */
 router.get('/', indexController.displayHomePage);
 /* GET Route for displaying the Login page */
@@ -23,4 +31,7 @@ router.post('/signup', indexController.processRegisterPage);
 
 /* GET to perform UserLogout */
 router.get('/logout', indexController.performLogout);
+
+/* Get Display Statistic View */
+router.get('/statistic',requireAuth, indexController.displayStatistic);
 module.exports = router;

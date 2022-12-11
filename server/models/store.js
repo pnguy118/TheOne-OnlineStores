@@ -15,8 +15,6 @@ let storeModel = mongoose.Schema({
     type: String,
     location: String,
     about: String,
-    rate: Number,
-    review: String,
 },{
     timestamps:true
 }

@@ -19,6 +19,8 @@ router.get('/', storeController.displayListStore);
 
 /* GET Route for the Store Detail Page */
 router.get('/detail/:id',storeController.displayStoreDetail);
+/* POST Route for the Store Detail Page */
+router.post('/detail/:id',requireAuth,storeController.processStoreDetail);
 /* GET Route for the specific Owner's Store Page*/
 router.get('/owner-store/:id',storeController.displayOwnerStore);
 /* GET Route for displaying the Add store - CREATE Operation */

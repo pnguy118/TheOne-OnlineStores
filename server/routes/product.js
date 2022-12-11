@@ -12,17 +12,12 @@ function requireAuth(req, res, next)
     next();
 }
 let productController = require('../controllers/product');
-/* GET Route for the Product List page - READ Operation */
-router.get('/', productController.displayListProduct);
-
-/* GET Route for the Product Detail Page */
-router.get('/detail/:id',productController.displayProductDetail);
 
 /* GET Route for displaying the Add product - CREATE Operation */
-router.get('/add', requireAuth, productController.displayAddProduct);
+router.get('/add/:id', requireAuth, productController.displayAddProduct);
 
 /* POST Route for processing the Add product - CREATE Operation */
-router.post('/add', requireAuth, productController.processAddProduct);
+router.post('/add/:id', requireAuth, productController.processAddProduct);
 
 /* GET Route for displaying the Edit product - UPDATE Operation */
 router.get('/edit/:id', requireAuth, productController.displayEditProduct);

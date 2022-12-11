@@ -3,40 +3,8 @@ let mongoose = require('mongoose');
 let Product = require('../models/product');
 let userModel = require('../models/user');
 let User = userModel.User;
+let Store = require('../models/store');
 
-/* GET display product list page. */
-module.exports.displayListProduct = (req, res, next) => {
-  Product.find({}).sort('-updatedAt').exec((err, product) => {
-    if (err) {
-      return console.error(err);
-    } else {
-      res.render('products/list', {
-        title: "Product List",
-        product: product,
-        displayName: req.user ? req.user.displayName : "",
-        userId: req.user ? req.user._id.toString() : "not authenticated",
-        username: req.user ? req.user.username : "not admin"
-      });
-    }
-  });
-};
-/* GET display product detail page */
-module.exports.displayProductDetail = (req, res, next) => {
-  let id = req.params.id;
-  Product.findById(id, (err, productToView) => {
-    if (err) {
-      console.log(err);
-      res.end(err);
-    }
-    else {
-      res.render('products/detail', {
-        title: 'Product Detail',
-        product: productToView,
-        displayName: req.user ? req.user.displayName : ''
-      });
-    }
-  });
-};
 /* GET display product add page */
 module.exports.displayAddProduct = (req, res, next) => {
   res.render('products/add', {
@@ -47,12 +15,14 @@ module.exports.displayAddProduct = (req, res, next) => {
 
 /* POST add a new product model */
 module.exports.processAddProduct = (req, res, next) => {
+  let id = req.params.id;
   let newProduct = Product({
     "productName": req.body.productName.trim(),
     "type": req.body.type.trim(),
     "about": req.body.about.trim(),
-    "rate": req.body.rate,
-    "review": req.body.review.trim()
+    "price": req.body.price,
+    "condition": req.body.condition.trim(),
+    "storeId": id
   });
 
   Product.create(newProduct, (err) => {
@@ -61,7 +31,7 @@ module.exports.processAddProduct = (req, res, next) => {
       res.end(err);
     }
     else {
-      res.redirect('/product-list');
+      res.redirect('/store-list/detail/' + id);
     }
   });
 };
@@ -87,23 +57,30 @@ module.exports.displayEditProduct = (req, res, next) => {
 module.exports.processEditProduct = (req, res, next) => {
 
   let id = req.params.id;
-
-  let updatedProduct = Product({
-    "_id": id,
-    "productName": req.body.productName.trim(),
-    "type": req.body.type.trim(),
-    "about": req.body.about.trim(),
-    "rate": req.body.rate,
-    "review": req.body.review.trim()
-  });
-
-  Product.updateOne({ _id: id }, updatedProduct, (err) => {
+  Product.findById(id, (err, productToEdit) => {
     if (err) {
       console.log(err);
       res.end(err);
     }
     else {
-      res.redirect('/product-list');
+      let updatedProduct = Product({
+        "_id": id,
+        "productName": req.body.productName.trim(),
+        "type": req.body.type.trim(),
+        "about": req.body.about.trim(),
+        "price": req.body.price,
+        "condition": req.body.condition.trim(),
+        "storeId": productToEdit.storeId
+      });
+      Product.updateOne({ _id: id }, updatedProduct, (err) => {
+        if (err) {
+          console.log(err);
+          res.end(err);
+        }
+        else {
+          res.redirect('/store-list/detail/' + productToEdit.storeId);
+        }
+      });
     }
   });
 
@@ -111,14 +88,23 @@ module.exports.processEditProduct = (req, res, next) => {
 /* Perform the deletion */
 module.exports.performDelete = (req, res, next) => {
   let id = req.params.id;
-
-  Product.deleteOne({ _id: id }, (err) => {
+  Product.findById(id, (err, product) => {
     if (err) {
       console.log(err);
       res.end(err);
     }
     else {
-      res.redirect('/product-list');
-    };
+      let storeId = product.storeId;
+      Product.deleteOne({ _id: id }, (err) => {
+        if (err) {
+          console.log(err);
+          res.end(err);
+        }
+        else {
+          res.redirect('/store-list/detail/' + storeId);
+        };
+      });
+    }
   });
+
 };
