@@ -5,6 +5,9 @@
   --mainBtn-box-shadow:rgb(38, 57, 77) 0px 20px 30px -10px;
   --navbar-box-shadow:rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;;
 }
+h1, .sub-title{
+  color:#E27D60;
+}
 main{
   min-height: 100vh;
 }
@@ -91,13 +94,13 @@ footer nav p {
 .login-container .btn-success:hover,.btn-primary:hover{
   transform: translateY(-5px);
 }
-/* Store List Page */
-.store-card{
+/* Store List Page + Product List*/
+.store-card, .product-card{
   margin-right: 1rem;  
   transition: all ease-in-out .4s;
   box-shadow: var(--box-shadow);
 }
-.store-card:hover{
+.store-card:hover, .product-card:hover{
   scale: 1.05;  
 }
 .store-about{
@@ -122,4 +125,23 @@ footer nav p {
 .btn-bottom-container .btn:hover{
   transform: translateY(-5px);
 }
-
+/*Store detail page*/
+.review-container form, .review-item{
+  border-radius: 50px;
+  box-shadow: var(--box-shadow);
+  margin-top: 1rem;
+  transition: all ease-in-out 0.4s;
+}
+.review-item:hover{
+  scale: 1.05; 
+}
+/* Statistic page */
+.statistic-container .container{
+  box-shadow: var(--box-shadow);
+}
+.statistic-container .container h2{
+  color: #0DCAF0;
+}
+.statistic-container .container span{
+  color: #00f970;
+}

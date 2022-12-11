@@ -21,11 +21,6 @@
             <ul class="list-group list-group-flush">
                 <!-- Link to the specific owner store based on the owner id attribute of store model -->
                 <li class="list-group-item">Owner: <a href="/store-list/owner-store/<%= store[count].ownerId %> "><span class="owner fw-bold"><%= store[count].owner %></span></a></li>
-              <% if (store[count].rate > 5) { %>
-                <li class="list-group-item">Rate: <span class="rate-score text-success"><%= store[count].rate %></span>/10</li>
-              <% } else { %>
-                <li class="list-group-item">Rate: <span class="rate-score text-danger"><%= store[count].rate %></span>/10</li>
-              <% } %>
               
               <li class="list-group-item">Type: <span class="shop-type"><%= store[count].type %></span></li>
               <li class="list-group-item">Location: <span class="shop-type"><%= store[count].location %></span></li>
